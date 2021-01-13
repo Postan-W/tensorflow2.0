@@ -4,7 +4,7 @@ print(tf.__version__)
 data_root = pathlib.Path.cwd()
 print(data_root)
 
-images_root = pathlib.Path("C:\\Users\\25756\\Desktop\\flowers\\jpg2")
+images_root = pathlib.Path("C:\\Users\\15216\\Desktop\\data\\dataset\\images1\\jpg2")
 
 images_dirpath_list = list(images_root.glob('*'))
 print(images_dirpath_list[0],type(images_dirpath_list[0]))
@@ -19,6 +19,7 @@ print(all_image_paths[0],type(all_image_paths[0]))
 label_list = [str(item.name) for item in images_root.glob('*')]
 print(label_list)
 # 将类别编上号,形如'blueBell': 0, 'buttercup': 1, 'coltsFoot': 2的形式
+#这也是列表转为字典的标准形式，即[(k1,v1),(k2,v2).....]
 label_to_index = dict((name,tag) for tag,name in enumerate(label_list))
 print(label_to_index,type(label_to_index))
 #获取所有图片的类标
@@ -34,6 +35,7 @@ AUTOTUNE = tf.data.experimental.AUTOTUNE
 #构建图片数据的数据集
 from local_utilities.images_process import load_and_process
 images_ds =path_ds.map(load_and_process,num_parallel_calls=AUTOTUNE)
+print(images_ds)
 # 构建类标数据的数据集
 
 label_ds = tf.data.Dataset.from_tensor_slices(tf.cast(all_image_labels,tf.int64))
@@ -43,9 +45,9 @@ image_label_ds = tf.data.Dataset.zip((images_ds,label_ds))
 print(images_ds)
 print(label_ds)
 print(image_label_ds)
-
 #绘出几张图片
 from local_utilities import visualization_matplotlib
 visualization_matplotlib.images1(image_label_ds)
+
 
 
