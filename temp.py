@@ -30,7 +30,7 @@ def process_data_to_tensor(root_path:str,tensor_shape:list):
     labels = tf.keras.utils.to_categorical(labels)
     return data,labels
 
-data,labels = process_data_to_tensor(root_path,[500,500])
+# data,labels = process_data_to_tensor(root_path,[500,500])
 # # datafile = open("C:\\Users\\15216\\Desktop\\data\\dataset\\images1\\jpg2\\data.pkl","wb")
 # # labelsfile = open("C:\\Users\\15216\\Desktop\\data\\dataset\\images1\\jpg2\\labels.pkl","wb")
 # # import pickle
@@ -43,14 +43,17 @@ data,labels = process_data_to_tensor(root_path,[500,500])
 # print("第一个onehot标签是：",labels[0])
 # print("第81个onehot标签是：",labels[80])
 #
-# # datafile = open("C:\\Users\\15216\\Desktop\\data\\dataset\\images1\\jpg2\\data.pkl","rb")
-# # labelsfile = open("C:\\Users\\15216\\Desktop\\data\\dataset\\images1\\jpg2\\labels.pkl","rb")
-# #
-# # import pickle
-# # loaddata = pickle.load(datafile)
-# # loadlabels = pickle.load(labelsfile)
-# # print(loaddata.shape)
-# # print(loadlabels.shape)
+datafile = open("C:\\Users\\15216\\Desktop\\data\\dataset\\images1\\jpg2\\data.pkl","rb")
+labelsfile = open("C:\\Users\\15216\\Desktop\\data\\dataset\\images1\\jpg2\\labels.pkl","rb")
+
+import pickle
+loaddata = pickle.load(datafile)
+loadlabels = pickle.load(labelsfile)
+print(loaddata.shape)
+print(loadlabels.shape)
+loaddata = np.array(loaddata,dtype="float32")
+loaddata /= 255.0
+print(loaddata)
 
 
 

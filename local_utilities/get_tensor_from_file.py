@@ -9,7 +9,11 @@ img = Image.open(io.BytesIO(img))#读取内存中的二进制数据流
 
 root_path = "C:\\Users\\15216\\Desktop\\data\\dataset\\images1\\jpg2"
 
-
+"""
+比如在image文件夹下有5个子文件夹，每个子文件夹代表一种类型的数据，子文件夹的命名方式举例：flowers0、flowers1、
+flowers2...。这样的话，下面这个函数就可以返回两个numpy数组data和labels，也可以叫张量，即每张图片的numpy表示和
+其对应的onehot标记。这两个numpy数组可以直接作为网络fit时的data和labels
+"""
 def process_data_to_tensor(root_path:str,tensor_shape:list):
     root = pathlib.Path(root_path)
     all_images = root.glob("*/*")
