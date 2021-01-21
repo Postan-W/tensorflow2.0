@@ -3,7 +3,7 @@
 import tensorflow as tf
 #导入数据集
 from base_process import all_image_paths,image_label_ds,AUTOTUNE,label_list
-mobile_net = tf.keras.applications.MobileNetV2(input_shape=(192,192,3),include_top=False)
+mobile_net = tf.keras.applications.MobileNetV2(input_shape=(500,500,3),include_top=False)
 #参数固定
 mobile_net.trainable = False
 

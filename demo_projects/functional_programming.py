@@ -61,7 +61,7 @@ def train():
 def predict(number):
     model = tf.keras.models.load_model("C:\\Users\\15216\Desktop\\项目\\tensorflow2\\demo_projects\\models\\h5\\numbers_classcification.h5")
 
-    data = test_data = np.zeros((1, 32), dtype="int32")
+    test_data = np.zeros((1, 32), dtype="int32")
     test_data += number
     predictions = model.predict(test_data)
     print("输入是：",test_data)
@@ -69,4 +69,7 @@ def predict(number):
     print("实际输出是：",np.argmax(predictions[0]))
 
 
-train()
+from h5_operator import h5_input_shape
+model = tf.keras.models.load_model("C:\\Users\\15216\Desktop\\项目\\tensorflow2\\demo_projects\\models\\h5\\numbers_classcification.h5")
+shape = h5_input_shape(model.to_json())
+print(shape)
